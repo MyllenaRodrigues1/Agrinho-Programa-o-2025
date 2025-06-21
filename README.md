@@ -9,6 +9,12 @@ Criar uma ferramenta digital acessível que permita aos moradores e estudantes v
 forma clara os pontos críticos relacionados ao meio ambiente em Paranavaí, bem como as iniciativas positivas da comunidade.
 Neste projeto tem pontos onde mostra os Desmatamentos, Lixos e queimadas irregulares na cidade.
 
+🧱 Estrutura do Projeto
+
+-HTML (index.html): estrutura principal da página, onde o conteúdo do EcoMapa é apresentado.
+-CSS (style.css): responsável pelo estilo visual do mapa e de todos os elementos da página, garantindo uma aparência agradável e responsiva.
+-JavaScript (script.js): responsável pela interatividade do EcoMapa, como cliques nos ícones, botões e ações dinâmicas do mapa.
+
 -🧱 Estrutura do Projeto
 O projeto é composto por:
 
