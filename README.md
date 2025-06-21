@@ -70,9 +70,9 @@ o EcoMapa desperta o senso de que devemos ter mais  responsabilidade coletiva e 
 
 🌱 Paranavaí merece ser cuidada — e esse mapa é só o começo do que pode estar por vim.
 
-Desenvolvido por: Myllena Rodrigues Clerice  
-Professora: Renata Evaldt
-Projeto Agrinho de Programação 2025
+-Desenvolvido por: Myllena Rodrigues Clerice  
+-Professora: Renata Evaldt
+-Projeto Agrinho de Programação 2025
 
 
 
