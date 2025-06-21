@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoMapa Paranavaí</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- Tela de início (capa) simples -->
+<div id="capa" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, #27ae60, #2ecc71);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+">
+  <h1 style="font-size: 3em; margin-bottom: 20px;">EcoMapa Paranavaí</h1>
+  <p style="font-size: 1.5em; margin-bottom: 40px;">SUA CIDADE, SEU IMPACTO!</p>
+  <button id="botaoEntrar" style="
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #34495e;
+    color: white;
+  ">Entrar</button>
+</div>
+
+  <header>
+    <h1>EcoMapa Paranavaí</h1>
+    <p>🌳SUA CIDADE, SEU IMPACTO🌳</p>
+  </header>
+
+<main>
+    <section class="painel-3d">
+     <div id="map" class="mapa-3d"></div>
+     <div id="form" class="form-3d">
+     <button id="compartilharBtn"
+     class="botao-compartilhar">🔗 Compartilhar</button>
+      <h2>Adicionar Problema Ambiental</h2>
+      <label>Tipo:
+        <select id="tipo">
+          <option value="lixo">Lixo</option>
+          <option value="desmatamento">Desmatamento</option>
+          <option value="queimada">Queimada</option>
+        </select>
+      </label>
+      <label>Descrição:
+        <input type="text" id="descricao" placeholder="Ex: Lixo jogado em terreno vazio">
+      </label>
+      <button onclick="marcarProblema()">Marcar no mapa</button>
+    </div>
+   </section>
+  </main>
+<section class="explicacoes">
+  <div class="topico">
+    <h2>Consequências e Soluções</h2>
+    <p class="animado">O desmatamento, lixo e queimadas no Paraná, intensifica fenômenos negativos no meio ambiente e na vida das pessoas, afetando enchentes, temperatura e qualidade de vida.</p>
+  </div>
+
+  <div class="topico">
+    <h2>🗑️ Lixo</h2>
+    <p class="animado">O acúmulo de lixo nas ruas e rios polui o meio ambiente e causa enchentes. É importante separar os resíduos e incentivar a coleta seletiva.</p>
+    <p class="animado">✅ <strong>Solução:</strong> Reciclagem, campanhas de conscientização e descarte correto.</p>
+  </div>
+
+  <div class="topico">
+    <h2>🌳 Desmatamento</h2>
+    <p class="animado">O desmatamento reduz a biodiversidade, prejudica o clima e aumenta a emissão de CO₂.</p>
+    <p class="animado">✅ <strong>Solução:</strong> Reflorestamento, leis ambientais e educação ambiental.</p>
+  </div>
+
+  <div class="topico">
+    <h2>🔥 Queimadas</h2>
+    <p class="animado">As queimadas prejudicam a saúde da população e destroem o solo e os habitats naturais.</p>
+    <p class="animado">✅ <strong>Solução:</strong> Fiscalização, alternativas sustentáveis e alertas à defesa civil.</p>
+  </div>
+</section>
+  </footer>
+
+  <script src="script.js"></script>
+<script>
+  const botaoEntrar = document.getElementById('botaoEntrar');
+  const capa = document.getElementById('capa');
+
+  botaoEntrar.addEventListener('click', () => {
+    capa.style.display = 'none';
+  });
+
+</script>
+<script>
+  document.getElementById("compartilharBtn").addEventListener("click", function () {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+      alert("🔗 Link copiado para a área de transferência!");
+    }).catch(err => {
+      alert("❌ Erro ao copiar o link.");
+    });
+  });
+</script>
+</body>
+</html

@@ -1,0 +1,605 @@
+/* Estilo geral */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #2e7d32;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 140px); /* ocupa o restante da tela */
+}
+
+#map {
+  flex: 2;
+  height: 100%;
+}
+
+#form {
+  flex: 1;
+  padding: 20px;
+  background-color: #e8f5e9;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+#form label {
+  display: block;
+  margin: 15px 0 5px;
+}
+
+#form input, #form select, #form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: #c8e6c9;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ====== Efeitos 3D para formulário e mapa ====== */
+#form {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background: linear-gradient(145deg, #d0f0c0, #a0d080);
+}
+
+#map {
+  transform: perspective(800px) rotateY(10deg);
+  transition: transform 0.3s ease;
+}
+
+#map:hover {
+  transform: perspective(800px) rotateY(0deg);
+}
+
+/* ====== Estilo 3D Rumortizado ====== */
+
+#form {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  background: linear-gradient(135deg, #b9fbc0, #90dbf4);
+  transform: perspective(1000px) rotateY(-2deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#form:hover {
+  transform: perspective(1000px) rotateY(0deg);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+}
+
+#map {
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  transform: perspective(1000px) rotateY(4deg);
+  transition: transform 0.4s ease;
+}
+
+#map:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+/* Botão com efeito saltado */
+#form button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.painel-3d {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: radial-gradient(circle at center, #e0f7fa, #b2ebf2);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin: 20px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main, .painel-3d {
+  height: calc(100vh - 140px); /* Altura total da tela, tirando cabeçalho e rodapé */
+  display: flex;
+}
+
+.painel-3d {
+  gap: 20px;
+  padding: 0;
+  background: radial-gradient(circle at center, #e0f7fa, #b2ebf2);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin: 0;
+  flex: 1;
+}
+
+#map {
+  flex: 2;
+  height: 100%;
+}
+
+#form {
+  flex: 1;
+  height: 100%;
+  padding: 20px;
+  background-color: #e8f5e9;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  overflow-y: auto;
+}
+
+.leaflet-popup-content-wrapper {
+  background: linear-gradient(145deg, #ffffff, #e0f7fa);
+  border-radius: 12px;
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.leaflet-popup-tip {
+  background: #e0f7fa;
+}
+
+@keyframes balanco {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-8px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+.marker-balanco {
+  animation: balanco 0.6s ease;
+}
+
+@keyframes balanco {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.marker-balanco {
+  animation: balanco 0.6s ease;
+}
+
+.leaflet-popup-content img {
+  max-width: 100%;
+  display: block;
+  margin: 5px 0 0;
+  border-radius: 8px;
+}
+
+.efeito-fogo {
+  font-size: 40px;
+  animation: subir 2s infinite;
+}
+
+.efeito-lixo {
+  font-size: 32px;
+  animation: girar 2s infinite;
+}
+
+.efeito-desmatamento {
+  font-size: 32px;
+  animation: piscar 1.5s infinite;
+}
+
+@keyframes subir {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-10px); opacity: 0.7; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes piscar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+#descricao-projeto {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px 20px;
+  background-color: #f0f8ff;
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  color: #333;
+  text-align: center;
+}
+
+#descricao-projeto h2 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+#descricao-projeto p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.capa {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Paranava%C3%AD_-_PR_-_Panorama.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.capa {
+  background-color: #2e7d32; /* Verde escuro */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#capa {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #27ae60; /* fundo verde */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-align: center;
+}
+
+/* Fundo com gradiente suave */
+#capa {
+  background: linear-gradient(135deg, #2c3e50 0%, #27ae60 100%);
+  color: white;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Título com sombra para destacar */
+#capa h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  letter-spacing: 2px;
+}
+
+/* Subtítulo com sombra leve e espaçamento */
+#capa p {
+  font-size: 1.8em;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  letter-spacing: 1px;
+}
+
+/* Botão estilizado com sombra e transição */
+#botaoEntrar {
+  background-color: #1f618d; /* azul escuro */
+  color: white;
+  padding: 15px 40px;
+  font-size: 1.3em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(31, 97, 141, 0.6);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efeito hover do botão */
+#botaoEntrar:hover {
+  background-color: #145374; /* azul mais escuro */
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(20, 83, 116, 0.8);
+}
+
+/* Animação suave de brilho no título */
+@keyframes brilho {
+  0%, 100% {
+    text-shadow: 0 0 5px #6aff6a, 0 0 10px #4caf50;
+  }
+  50% {
+    text-shadow: 0 0 15px #aaffaa, 0 0 25px #66cc66;
+  }
+}
+
+#capa h1 {
+  animation: brilho 3s ease-in-out infinite;
+}
+
+/* Animação leve de pulso no botão */
+@keyframes pulso {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  }
+  50% {
+    transform: scale(1.07);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  }
+}
+
+#botaoEntrar {
+  animation: pulso 4s ease-in-out infinite;
+}
+
+#capa {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.3);
+  animation: brilho 3s ease-in-out infinite alternate;
+}
+
+@keyframes brilho {
+  0% {
+    filter: brightness(0.9);
+  }
+  100% {
+    filter: brightness(1.1);
+  }
+}
+
+#capa h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+#capa p {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+#botaoEntrar {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #2980b9; /* azul escuro */
+  color: white;
+  box-shadow: 0 4px 8px rgba(41, 128, 185, 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#botaoEntrar:hover {
+  background-color: #1c5980;
+  box-shadow: 0 6px 12px rgba(28, 89, 128, 0.8);
+}
+
+#capa {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+/* Ícones flutuantes via pseudo-elementos */
+#capa::before,
+#capa::after,
+#capa div::before,
+#capa div::after {
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: flutuar 6s ease-in-out infinite alternate;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.4));
+  pointer-events: none;
+}
+
+/* Animação de flutuação */
+@keyframes flutuar {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(15deg); }
+}
+
+/* Estilo geral da capa */
+#capa {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #27ae60, #2ecc71); /* fundo degradê verde */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden; /* para esconder o que sair da div */
+}
+
+/* Estilo do botão */
+#botaoEntrar {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #34495e; /* azul escuro */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+#botaoEntrar:hover {
+  background-color: #2c3e50;
+}
+
+/* Animação de entrada da capa */
+#capa {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Animação: fade in (aparecer suavemente) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sombra no botão e efeito de zoom ao passar o mouse */
+#botaoEntrar {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+#botaoEntrar:hover {
+  transform: scale(1.05);
+}
+
+/* Brilho no texto do título */
+#capa h1 {
+  text-shadow: 0 0 8px #ffffffaa;
+}
+
+.explicacoes {
+  background-color: #f4f4f4;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.topico {
+  background: white;
+  padding: 20px;
+  border-left: 6px solid #2ecc71;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.topico:hover {
+  transform: scale(1.02);
+}
+
+.topico h2 {
+  margin-bottom: 10px;
+  font-size: 1.6em;
+  color: #2c3e50;
+}
+
+.topico p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animado {
+  animation: fadeIn 1.5s ease-in-out both;
+}
+
+.botao-compartilhar {
+  margin: 20px auto;
+  display: block;
+  padding: 12px 24px;
+  font-size: 1em;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.botao-compartilhar:hover {
+  background-color: #27ae60;
+}
